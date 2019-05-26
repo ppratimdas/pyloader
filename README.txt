@@ -1,9 +1,7 @@
 PyLoader - Python Tools for the freeLoader
 By Anthony McNicoll
 
-This code is made available under a Creative Commons
-Attribution-Noncommercial-Share-Alike 3.0 license. See
-<http://creativecommons.org/licenses/by-nc-sa/3.0> for details.
+This code is made available under under the BSD Open Source License (see license.txt)
 
 This is the primary release of the PyLoader software for interfacing
 with a Freeloader machine.
@@ -15,6 +13,6 @@ It includes:
 	basictest.py - Extendable class containing host of useful methods for testing
 	tensiontest.py - Example use of BasicTest in the form of a simple tension test.
 
-The only prerequesite is pySerial. This must be installed seperately.
+The only prerequisite is pySerial. This must be installed separately.
 
 Full documentation in HTML form is available in the docs folder.
