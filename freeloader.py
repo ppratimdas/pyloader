@@ -74,7 +74,7 @@ class Freeloader():
         self.dyna.SetMovingSpeed(1,0)
         self.dyna_online = True
 
-    def connect_load(self, port, baudr, sps = 120):
+    def connect_load(self, port, baudr, sps = 7.5):
         """ 
         Method to connect to the load cell interface.
         port is a string of form "COM5" for Windows. 
@@ -97,7 +97,7 @@ class Freeloader():
         self.cell_online = 1
         # Lastly, make sure we received an appropriate response to SPS setting.
         try:
-            self.wait_for_cell(12, .5)
+            self.wait_for_cell(10, 3)
             self.cell.flushInput()
         except FreeloaderError as fe:
             self.cell.close()
@@ -105,7 +105,7 @@ class Freeloader():
             out = "Load connect failed: " + fe.msg
             raise FreeloaderError(out)
 
-    def autoconnect(self, verbose = False, loadbaud = 9600, loadsps = 120, dynabaud = 1000000):
+    def autoconnect(self, verbose = False, loadbaud = 9600, loadsps = 7.5, dynabaud = 57600):
         """
         A convenient method which automatically finds the Dynamixel and load cell 
         on whatever port they may be connected to, if they are indeed available.
@@ -124,7 +124,7 @@ class Freeloader():
                 break
             except FreeloaderError as fe:
                 if verbose:
-                    print "No load cell found on " + port[0] # + " (" + fe.msg + ")"
+                    print "No load cell found on " + port[0]  + " (" + fe.msg + ")"
         if not self.cell_online:
             if verbose:
                 print "Autoconnect failed to find a load cell."
